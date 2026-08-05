@@ -1,0 +1,35 @@
+# import math ga guna
+
+# Menampilkan header awal
+print("### REQUEST TACTICAL DOLL ###")
+
+# Menerima input dari pengguna
+def minta_data():
+ try:
+  global nama_doll, firepower, rate_of_fire, accuracy, evasion
+  nama_doll = input("Masukkan nama Tactical Doll: ")
+  firepower = int(input("Masukkan Firepower: "))
+  rate_of_fire = int(input("Masukkan Rate of Fire: "))
+  accuracy = int(input("Masukkan Accuracy: "))
+  evasion = int(input("Masukkan Evasion: "))
+ except ValueError:
+  print("Tolong masukin data yang bener.")
+  minta_data()
+minta_data()
+# Perhitungan Damage per Second (DPS)
+# Dibulatkan maksimal 2 digit di belakang koma dengan fungsi round()
+dps = round((firepower * rate_of_fire) / 60, 2)
+
+# Perhitungan Combat Effectiveness (CE)
+# Dibulatkan ke bawah menjadi bilangan bulat menggunakan math.floor() / int()
+ce = int((30 * firepower) + (40 * (rate_of_fire**2) / 120) + (15 * (accuracy + evasion)))
+
+# Menampilkan output hasil sesuai format
+print("\n### SUCCESS ###")
+print(f"Tactical Doll: {nama_doll}")
+print(f"Firepower: {firepower}")
+print(f"Rate of Fire: {rate_of_fire}")
+print(f"Accuracy: {accuracy}")
+print(f"Evasion: {evasion}")
+print(f"Damage per Second: {dps}")
+print(f"Combat Effectiveness: {ce}")
